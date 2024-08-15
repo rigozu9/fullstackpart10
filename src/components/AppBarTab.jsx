@@ -4,19 +4,17 @@ import Text from './Text';
 import { Link } from 'react-router-native';
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+  },
   text: {
-    paddingLeft: 10, // Add padding to the left side
+    paddingLeft: 10,
   },
 });
 
 const AppBarTab = () => {
   return (
-    <View>
-      {/* <Pressable onPress={() => { console.log("Hi") }}>
-          <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
-            Repositories
-          </Text>
-      </Pressable> */}
+    <View style={styles.container}>
       <Link to="/">
         <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
           Repositories
