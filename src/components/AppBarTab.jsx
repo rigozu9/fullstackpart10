@@ -1,6 +1,7 @@
 import React from 'react';
-import { Pressable, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Text from './Text';
+import { Link } from 'react-router-native';
 
 const styles = StyleSheet.create({
   text: {
@@ -10,9 +11,23 @@ const styles = StyleSheet.create({
 
 const AppBarTab = () => {
   return (
-    <Pressable onPress={() => { console.log("Hi") }}>
-        <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">Repositories</Text>
-    </Pressable>
+    <View>
+      {/* <Pressable onPress={() => { console.log("Hi") }}>
+          <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+            Repositories
+          </Text>
+      </Pressable> */}
+      <Link to="/">
+        <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+          Repositories
+        </Text>
+      </Link>
+      <Link to="/signin">
+        <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+          Sign in
+        </Text>
+      </Link>
+    </View>
   );
 };
 
