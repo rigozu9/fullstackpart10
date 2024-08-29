@@ -51,8 +51,7 @@ const SignInForm = () => {
     const { username, password } = values;
 
     try {
-      const { data } = await signIn({ username, password });
-      console.log(data);
+      await signIn({ username, password });
     } catch (e) {
       console.log(e);
     }
