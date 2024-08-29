@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Text from './Text';
 import { Link } from 'react-router-native';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../graphql/queries';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +15,10 @@ const styles = StyleSheet.create({
 });
 
 const AppBarTab = () => {
+  const { data } = useQuery(GET_ME);
+
+  const isAuthenticated = !!data?.me;
+
   return (
     <View style={styles.container}>
       <Link to="/">
@@ -20,11 +26,19 @@ const AppBarTab = () => {
           Repositories
         </Text>
       </Link>
-      <Link to="/signin">
-        <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
-          Sign in
-        </Text>
-      </Link>
+      {isAuthenticated ? (
+        <Link to="/signout">
+          <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+            Sign out
+          </Text>
+        </Link>
+      ) : (
+        <Link to="/signin">
+          <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+            Sign in
+          </Text>
+        </Link>
+      )}
     </View>
   );
 };
