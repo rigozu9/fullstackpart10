@@ -3,7 +3,7 @@ import { Route, Routes, Navigate } from 'react-router-native';
 
 import RepositoryList from './RepositoryList';
 import AppBar from './AppBar';
-import SignInForm from './SignIn';
+import SignIn from './SignIn';
 import SignOut from './SignOut'
 import theme from '../theme';
 
@@ -21,7 +21,7 @@ const Main = () => {
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} />
-        <Route path="/signin" element={<SignInForm />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/signout" element={<SignOut />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
