@@ -27,11 +27,18 @@ const AppBarTab = () => {
         </Text>
       </Link>
       {isAuthenticated ? (
-        <Link to="/signout">
-          <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
-            Sign out
-          </Text>
-        </Link>
+        <>
+          <Link to="/review">
+            <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+              Create a review
+            </Text>
+          </Link>
+          <Link to="/signout">
+            <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+              Sign out
+            </Text>
+          </Link>
+        </>
       ) : (
         <Link to="/signin">
           <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
