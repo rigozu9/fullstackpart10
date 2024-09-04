@@ -1,22 +1,22 @@
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORIES } from '../graphql/queries';
 
-const useRepositories = () => {
+const useRepositories = ({ orderBy = 'CREATED_AT', orderDirection = 'DESC' } = {}) => {
   const { data, error, loading } = useQuery(GET_REPOSITORIES, {
+    variables: { 
+      orderBy,
+      orderDirection
+    },
     fetchPolicy: 'cache-and-network',
   });
 
-  // console.log("Loading:", loading);
-  // console.log("Data:", data);
-  // console.log("Error:", error ? JSON.stringify(error, null, 2) : "No error");
+  if (loading) {
+    console.log("Loading repositories...");
+  }
 
-  // if (data) {
-  //   console.log("Repositories:", data.repositories);
-  // }
-
-  // if (error) {
-  //   console.error("Detailed error:", error);
-  // }
+  if (error) {
+    console.log('Error from useQuery:', error);
+  }
 
   const repositories = data ? data.repositories : null;
 

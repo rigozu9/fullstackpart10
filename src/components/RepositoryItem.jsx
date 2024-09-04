@@ -65,8 +65,6 @@ const formatThousands = value => {
 };
 
 const RepositoryItem = ({ item, showGitHubButton = false }) => {
-  console.log("RepositoryItem received item:", item);
-
   const openGitHub = () => {
     Linking.openURL(item.url);
   };
