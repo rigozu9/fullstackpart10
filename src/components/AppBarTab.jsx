@@ -40,11 +40,18 @@ const AppBarTab = () => {
           </Link>
         </>
       ) : (
-        <Link to="/signin">
-          <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
-            Sign in
-          </Text>
-        </Link>
+        <>
+          <Link to="/signin">
+            <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+              Sign in
+            </Text>
+          </Link>
+          <Link to="/signup">
+            <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+              Sign up
+            </Text>
+          </Link>
+        </>
       )}
     </View>
   );

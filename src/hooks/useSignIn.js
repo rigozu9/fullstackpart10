@@ -20,7 +20,7 @@ const useSignIn = () => {
 
         await apolloClient.resetStore();
 
-        navigate('/repositories');
+        navigate('/');
       }
     } catch (error) {
       console.error('Error during sign in:', error);
