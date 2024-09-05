@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories, setSortCriteria, selectedOption, setSelectedOption }) => {
+export const RepositoryListContainer = ({ repositories, setSortCriteria, selectedOption, setSelectedOption, onEndReach }) => {
   const navigate = useNavigate();
   const repositoryNodes = repositories
     ? repositories.edges.map((edge) => edge.node)
@@ -38,6 +38,8 @@ export const RepositoryListContainer = ({ repositories, setSortCriteria, selecte
           setSelectedOption={setSelectedOption}
         />
       )}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };
@@ -49,13 +51,25 @@ const RepositoryList = () => {
 
   const [selectedOption, setSelectedOption] = useState('Latest repositories');
 
-  const { repositories } = useRepositories(sortCriteria);
+  const { repositories, fetchMore } = useRepositories({
+    first: 7,
+    sortCriteria
+  });
 
-  return <RepositoryListContainer repositories={repositories} 
-              setSortCriteria={setSortCriteria}
-              selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
-/>;
+  const onEndReach = () => {
+    console.log("reached the end");
+    fetchMore();
+  };
+
+  return ( 
+    <RepositoryListContainer 
+      repositories={repositories} 
+      setSortCriteria={setSortCriteria}
+      selectedOption={selectedOption}
+      setSelectedOption={setSelectedOption}
+      onEndReach={onEndReach}
+    />
+  );
 };
 
 export default RepositoryList;
