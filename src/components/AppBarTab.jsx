@@ -33,6 +33,11 @@ const AppBarTab = () => {
               Create a review
             </Text>
           </Link>
+          <Link to="/ownreviews">
+            <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
+              My Reviews
+            </Text>
+          </Link>
           <Link to="/signout">
             <Text style={styles.text} fontSize="heading" fontWeight="bold" color="textPrimary">
               Sign out

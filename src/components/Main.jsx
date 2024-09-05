@@ -8,6 +8,7 @@ import SignOut from './SignOut'
 import theme from '../theme';
 import SingleRepositoryView from './SingleRepositoryView';
 import CreateReview from './ReviewForm';
+import OwnReviews from './OwnReviews';
 import SignUp from './SignUpForm';
 
 const styles = StyleSheet.create({
@@ -28,6 +29,7 @@ const Main = () => {
         <Route path="/signout" element={<SignOut />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/review" element={<CreateReview />} />
+        <Route path="/ownreviews" element={<OwnReviews />} />
         <Route path="/repository/:id" element={<SingleRepositoryView />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

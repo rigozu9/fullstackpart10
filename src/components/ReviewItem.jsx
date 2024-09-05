@@ -55,9 +55,9 @@ const styles = StyleSheet.create({
   }
 });
 
-const ReviewItem = ({ item }) => {
+const ReviewItem = ({ item, own_review = false }) => {
   const formattedDate = format(new Date(item.createdAt), 'dd.MM.yyyy');
-//   console.log("ITEM RECEIVED IN REVIEWITEM", item);
+  // console.log("ITEM RECEIVED IN REVIEWITEM", item);
   return (
     <View testID="reviewItem" style={styles.container}>
       <View style={styles.header}>
@@ -65,7 +65,9 @@ const ReviewItem = ({ item }) => {
           <Text style={styles.ratingText}>{item.rating}</Text>
         </View>
         <View style={styles.mainInfo}>
-          <Text style={styles.username}>{item.user.username}</Text>
+          <Text style={styles.username}>
+            {own_review ? item.repository.fullName : item.user.username}
+          </Text>
           <Text style={styles.date}>{formattedDate}</Text>
           <Text style={styles.reviewText}>{item.text}</Text>
         </View>
